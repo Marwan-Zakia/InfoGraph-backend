@@ -8,7 +8,7 @@ const users = require("./models/index");
 const basicAuth = require("./middleware/basic");
 const bearerAuth = require("./middleware/bearer");
 const permissions = require("./middleware/acl.js");
-const project = require("./models/index");
+const projectsCollection = require("./models/index");
 
 authRouter.post("/signup", async (req, res, next) => {
 	console.log(users);
@@ -39,12 +39,29 @@ authRouter.get(
 	},
 );
 authRouter.post("/project", async (req, res) => {
-	let projects = await project.Project.create(req.body);
+	let projects = await projectsCollection.Project.create(req.body);
 	res.status(201).json(projects);
 });
 authRouter.get("/project", async (req, res) => {
-	let somthing = await project.Project.findAll({});
+	let somthing = await projectsCollection.Project.findAll({});
 	res.status(200).json(somthing);
+});
+authRouter.put("/project/:id", async (req, res) => {
+	const id = req.params.id;
+	const obj = req.body;
+	const Newproject = await projectsCollection.Project.findOne({
+		where: { id },
+	});
+	Newproject.update(obj);
+	res.status(201).json(Newproject);
+});
+authRouter.delete("/project/:id", async (req, res) => {
+	const id = req.params.id;
+	const project = await projectsCollection.Project.findOne({
+		where: { id },
+	});
+	project.destroy({ where: { id } });
+	res.status(200).json(project);
 });
 
 module.exports = authRouter;
