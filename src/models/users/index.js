@@ -1,8 +1,19 @@
 "use strict";
+/**
+ * @param {sequelize} sequelize
+ * @param {DataTypes} DataTypes
+ * @returns {userModel}
+ * @description creates the user model and exports it
+ * @method {beforeCreate} @param {user object}  - hashes the password before creating the user in the database 
+ * @method {BasicAuth} @param {email,password}  - authenticates the user using the email and password
+ * @method {authToken} @param {token}  - authenticates the user using the token
+ */
+
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET || "SECRET";
+
 
 const Users = (sequelize, DataTypes) => {
 	const userModel = sequelize.define("users", {

@@ -1,6 +1,15 @@
 /** @format */
 
 "use strict";
+
+/**
+ * @constructor {modal}
+ * @description takes the modal and applies database operations to it
+ * @method {create} @param {object}  - creates a new project in the database
+ * @method {get} @param {id} if available - @returns {object} - returns a project with the given id or all projects if no id is provided
+ * @method {update} @param {id,object}  - updates a project in the database with the given id
+ * @method {delete} @param {id}  - deletes a project in the database
+ */
 class Collection {
 	constructor(model) {
 		this.model = model;

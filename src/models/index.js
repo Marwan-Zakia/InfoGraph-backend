@@ -1,9 +1,17 @@
 /** @format */
+/**	
+ * * I defiend the configs for the database
+ * *I created the database and imported the models
+ * * I instantiated my class colloection for the models
+ * 
+ */
+
 "use strict";
 const { Sequelize, DataTypes } = require("sequelize");
 const Users = require("./users");
 const Collection = require("./collection");
 const Project = require("./project");
+
 
 require("dotenv").config();
 const POSTGRES_URL =
@@ -24,7 +32,6 @@ const sequelizeOptions =
 		: {};
 
 const sequelize = new Sequelize(POSTGRES_URL, sequelizeOptions);
-
 const usersModel = Users(sequelize, DataTypes);
 const usersCollection = new Collection(usersModel);
 const projectsModel = Project(sequelize, DataTypes);
