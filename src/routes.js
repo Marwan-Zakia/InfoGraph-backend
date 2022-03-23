@@ -1,5 +1,11 @@
 /** @format */
 
+
+/**	
+ * *I set up the endpoints for the api where i can create, get, update and delete projects
+ * *and allow the user signup and login to the api and
+ *  *create user accounts using the collection methods the meddilewares
+ */
 "use strict";
 
 const express = require("express");
@@ -12,6 +18,8 @@ const {
 	projectsCollection,
 	usersCollection,
 } = require("./models/index");
+
+
 
 authRouter.post("/signup", async (req, res, next) => {
 	console.log(users);

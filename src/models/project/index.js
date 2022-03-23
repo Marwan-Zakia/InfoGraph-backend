@@ -1,6 +1,14 @@
 /** @format */
 
 "use strict";
+/**
+ * i create the model for the project and i export it
+ * 
+ * @param {*} sequelize 
+ * @param {*} DataTypes 
+ * @returns projectModel
+ */
+
 const Porjects = (sequelize, DataTypes) => {
 	const projectModel = sequelize.define("projects", {
 		userName: {

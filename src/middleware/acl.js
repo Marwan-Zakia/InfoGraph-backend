@@ -1,5 +1,11 @@
 /** @format */
 
+	/**
+	 *  a middleware that checks if the user has the required capability
+	 * @param {*} capability  
+	 * 
+	 */
+
 module.exports = (capability) => {
 	return (req, res, next) => {
 		try {
